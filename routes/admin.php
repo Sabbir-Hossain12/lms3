@@ -182,8 +182,7 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
 
     //pages
     Route::resource('/pages', PageController::class)->names('page');
-
-    //achievements
+    Route::post('/upload-ckeditor-image', [PageController::class, 'uploadCkeditorImage'])->name('ckeditor.upload');
     Route::resource('/achievements', AchievementController::class)->names('achievement');
     Route::post('/achievement/change-status', [AchievementController::class, 'changeAchievementStatus'])->name('achievement.status');
 

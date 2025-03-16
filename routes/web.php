@@ -70,23 +70,23 @@ Route::get('/blog-details/{slug}',[BlogController::class,'blogDetails'])->name('
 Route::get('/checkout/{slug}', [OrderController::class,'checkoutPage'])->middleware(\App\Http\Middleware\StudentMiddleware::class)->name('checkout');
 Route::post('/order/submit', [OrderController::class,'orderSubmit'])->middleware(\App\Http\Middleware\StudentMiddleware::class)->name('order.submit');
 
-
 //dynamic Pages
 Route::get('/about-us', [HomeController::class,'aboutPage'])->name('about-us');
-
 Route::get('/contact-us', [HomeController::class,'contactPage'])->name('contact-us');
+
+//Admission
+Route::get('/how-to-apply', [HomeController::class,'howToApplyPage'])->name('how-to-apply');
+Route::post('/apply-now', [HomeController::class,'applyNow'])->name('apply-now');
+
 //pages
 Route::prefix('pages')->group(function () {
-
     Route::get('/{slug}', [HomeController::class,'page'])->name('page');
-
 });
 
 //ChatGPT
 Route::get('/ai-assistant', [AiController::class,'aiAssistant'])->name('ai-assistant');
 
 Route::post('/chat',AiController::class)->name('chat');
-
 
 //Student Authentication
 Route::prefix('user')->name('user.')->group(function ()

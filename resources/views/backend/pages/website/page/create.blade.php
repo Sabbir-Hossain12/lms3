@@ -34,7 +34,7 @@
                     <div class="card-body p-4">
 
                         <div class="row">
-                         
+
                             <div class="col-lg-6">
                                 <div>
                                     <div class="mb-3">
@@ -62,7 +62,7 @@
                                         <label for="short_desc" class="form-label">Short Description</label>
                                         <textarea id="short_desc" name="short_desc" class="form-control"></textarea>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="pageStatus" class="form-label">Status *</label>
                                         <select id="pageStatus" class="form-select" name="status">
@@ -70,7 +70,7 @@
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
-                                    
+
                                 </div>
                             </div>
 
@@ -149,7 +149,17 @@
         $(document).ready(function () {
 
             ClassicEditor
-                .create(document.querySelector('#page_desc'))
+                .create(document.querySelector('#page_desc'),{
+
+                ckfinder:
+                    {
+                        uploadUrl: "{{route('admin.ckeditor.upload', ['_token' => csrf_token() ])}}",
+                    }
+
+
+            }).then(newEditor => {
+                    jReq = newEditor;
+                })
                 .catch(error => {
                     console.error(error);
                 });

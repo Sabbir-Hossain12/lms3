@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Achievement;
+use App\Models\AdmissionResponse;
 use App\Models\Blog;
 use App\Models\Course;
 use App\Models\CourseClass;
@@ -47,7 +48,7 @@ class HomeController extends Controller
        $content= Page::where('slug', 'like' , '%'.$slug.'%')->orWhere('slug', $slug)->first();
 
        if ($content->slug == $slug) {
-           return view('Frontend.pages.info.about-us',compact('content'));
+           return view('frontend.pages.info.page',compact('content'));
        }
 
     }
@@ -61,5 +62,59 @@ class HomeController extends Controller
     public function contactPage()
     {
         return view('frontend.pages.info.contact-us');
+    }
+
+    public function aboutPage()
+    {
+        $about = About::first();
+
+        $testimonials = Testimonial::where('status', 1)->limit(2)->get();
+        $testimonialSetting = TestimonialSetting::first();
+        $teachers = User::role('teacher')->where('status', 1)->limit(4)->get();
+        $achievements = Achievement::where('status', 1)->limit(4)->get();
+
+
+        return view('frontend.pages.info.about-us',
+            compact(['about', 'testimonials', 'testimonialSetting', 'teachers', 'achievements']));
+    }
+    public function howToApplyPage()
+    {
+        return view('frontend.pages.admission.how-apply');
+    }
+
+
+    public function applyNow(Request $request)
+    {
+//      dd($request->all());
+        $request->validate([
+           'first_name' => 'required|string',
+           'last_name' => 'nullable|string',
+            'email' => 'required|email|string',
+            'phone' => 'required|string',
+            'why_chose' => 'nullable|string',
+            'why_interested' => 'nullable|string',
+            'documents' => 'nullable|mimes:jpg,jpeg,pdf,doc|max:2048',
+        ]);
+
+        $applyForm = new AdmissionResponse();
+        $applyForm->first_name=$request->first_name;
+        $applyForm->last_name=$request->last_name;
+        $applyForm->email=$request->email;
+        $applyForm->phone=$request->phone;
+        $applyForm->highest_education= json_encode($request->highest_education);
+        $applyForm->why_chose=$request->why_chose;
+        $applyForm->why_interested=$request->why_interested;
+
+        if ($request->hasFile('documents')) {
+            $file = $request->file('documents');
+            $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('backend/upload/admission/'), $filename);
+            $applyForm->documents ='backend/upload/admission/'. $filename;
+        }
+
+        $applyForm->save();
+
+
+        return redirect()->route('home')->with('success', 'Application submitted successfully');
     }
 }

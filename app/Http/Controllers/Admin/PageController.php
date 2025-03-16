@@ -33,12 +33,12 @@ class PageController extends Controller
     {
 //        dd($request->all());
         $request->validate([
-            
+
             'name' => ['required', 'string', 'max:255'],
-            
+
         ]);
         $page=new Page();
-        
+
         $page->name=$request->name;
         $page->slug =Str::slug($request->name);
         $page->title=$request->title;
@@ -48,33 +48,33 @@ class PageController extends Controller
         $page->meta_title=$request->meta_title;
         $page->meta_desc=$request->meta_desc;
         $page->meta_keywords=$request->meta_keywords;
-        
-        
+
+
         if ($request->hasFile('img')) {
-            
+
             $file = $request->file('img');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move(public_path('backend/upload/page/'), $filename);
             $page->img ='backend/upload/page/'. $filename;
         }
-        
+
         if ($request->hasFile('meta_img')) {
-            
+
             $file = $request->file('meta_img');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move(public_path('backend/upload/page/'), $filename);
             $page->meta_img ='backend/upload/page/'. $filename;
         }
-        
-        
-        
+
+
+
       $save=  $page->save();
-        
+
         if (!$save) {
             return redirect()->route('admin.page.index')->with('error','Something went wrong');
         }
         return redirect()->route('admin.page.index')->with('success','Page Created Successfully');
-        
+
     }
 
     /**
@@ -109,33 +109,33 @@ class PageController extends Controller
         $page->meta_title=$request->meta_title;
         $page->meta_desc=$request->meta_desc;
         $page->meta_keywords=$request->meta_keywords;
-        
+
         if ($request->hasFile('img')) {
-            
+
             if ($page->img && file_exists(public_path($page->img))) {
                 unlink(public_path($page->img));
-                
+
             }
             $file = $request->file('img');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move(public_path('backend/upload/page/'), $filename);
             $page->img ='backend/upload/page/'. $filename;
         }
-        
+
         if ($request->hasFile('meta_img')) {
-            
+
             if ($page->meta_img && file_exists(public_path($page->meta_img))) {
                 unlink(public_path($page->meta_img));
-                
+
             }
             $file = $request->file('meta_img');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move(public_path('backend/upload/page/'), $filename);
             $page->meta_img ='backend/upload/page/'. $filename;
         }
-        
+
         $save=  $page->save();
-        
+
         if (!$save) {
             return redirect()->route('admin.page.index')->with('error','Something went wrong');
         }
@@ -156,5 +156,21 @@ class PageController extends Controller
             return redirect()->back()->with('success','Page Deleted Successfully');
         }
         return redirect()->back()->with('error','Something went wrong');
+    }
+
+    public function uploadCkeditorImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName.uniqid().'_'.time().'.'.$extension;
+            $request->file('upload')->move(public_path('backend/upload/page/ckeditor'), $fileName);
+        }
+
+        return response()->json([
+            'url' => asset('backend/upload/page/ckeditor/'.$fileName), 'fileName' => $fileName,
+            'uploaded' => 1
+        ]);
     }
 }

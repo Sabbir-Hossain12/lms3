@@ -38,12 +38,19 @@
                                 <a href="javascript:void(0)">About</a>
                                 <ul class="lab-ul">
                                     <li>
-                                        <a href="{{ route('class-list') }}">About Us</a>
+                                        <a href="{{ route('about-us') }}">About Us</a>
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('course-list') }}">Courses</a>
+                                        <a href="{{ route('blog-list') }}">Blogs</a>
                                     </li>
+
+                                    @forelse(\App\Models\Page::where('status', 1)->get() as $page)
+                                        <li>
+                                            <a href="{{ route('page', $page->slug) }}">{{ $page->title }}</a>
+                                        </li>
+                                    @empty
+                                    @endforelse
                                 </ul>
                             </li>
 
@@ -51,18 +58,18 @@
                                 <a href="javascript:void(0)">Admission</a>
                                 <ul class="lab-ul">
                                     <li>
-                                        <a href="{{ route('class-list') }}">Categories</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('course-list') }}">Courses</a>
+                                        <a href="{{ route('how-to-apply') }}">How to Apply</a>
                                     </li>
 
+{{--                                    <li>--}}
+{{--                                        <a href="{{ route('course-list') }}">Scholarship</a>--}}
+{{--                                    </li>--}}
+
+{{--                                    <li>--}}
+{{--                                        <a href="{{ route('course-list') }}">Dates and Deadline</a>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </li>
-
-
-
-
 
                             <li class="menu-item-has-children">
                                 <a href="javascript:void(0)">Academics</a>
@@ -78,10 +85,6 @@
                             </li>
 
 
-                            <li>
-                                <a href="{{ route('blog-list') }}">Blog</a>
-
-                            </li>
 
                             <li><a href="{{ route('contact-us') }}">Contact</a></li>
                         </ul>

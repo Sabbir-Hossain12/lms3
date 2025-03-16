@@ -43,13 +43,13 @@
                                         <input class="form-control" type="text" placeholder="Page Name"
                                                id="name" name="name" value="{{$page->name ?? ''}}" required>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Page Title *</label>
                                         <input class="form-control" type="text" placeholder="Page Title"
                                                id="name" name="title" value="{{$page->title ?? ''}}" required>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="type" class="form-label">Page Type *</label>
                                         <select id="type" class="form-select" name="type">
@@ -57,7 +57,7 @@
                                             <option value="dynamic" @if($page->type == 'dynamic') selected @endif>Dynamic</option>
                                         </select>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="img" class="form-label">Image</label>
                                         <input class="form-control" type="file" id="img" name="img">
@@ -67,7 +67,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="short_desc" class="form-label">Short Description</label>
                                         <textarea id="short_desc" name="short_desc" class="form-control">{{$page->short_desc ?? ''}}}</textarea>
@@ -152,8 +152,8 @@
 @push('backendJs')
 
     {{--  CkEditor CDN  --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
-
+{{--    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>--}}
+    <script src="{{asset('https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -162,7 +162,18 @@
         $(document).ready(function () {
 
             ClassicEditor
-                .create(document.querySelector('#page_desc'))
+                .create(document.querySelector('#page_desc'),{
+
+                    ckfinder:
+                        {
+                            uploadUrl: "{{route('admin.ckeditor.upload', ['_token' => csrf_token() ])}}",
+                        }
+
+
+                })
+                .then(newEditor => {
+                    jReq = newEditor;
+                })
                 .catch(error => {
                     console.error(error);
                 });
