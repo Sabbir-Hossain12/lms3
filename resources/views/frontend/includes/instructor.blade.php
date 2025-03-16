@@ -19,29 +19,29 @@
                             <div class="instructor-content">
                                 <a href="#"><h4>{{ $teacher->name ?? '' }}</h4></a>
                                 <p>{{ $teacher->title ?? '' }}</p>
-                                <span class="ratting">
-                                        <i class="icofont-ui-rating"></i>
-                                        <i class="icofont-ui-rating"></i>
-                                        <i class="icofont-ui-rating"></i>
-                                        <i class="icofont-ui-rating"></i>
-                                        <i class="icofont-ui-rating"></i>
-                                    </span>
+{{--                                <span class="ratting">--}}
+{{--                                        <i class="icofont-ui-rating"></i>--}}
+{{--                                        <i class="icofont-ui-rating"></i>--}}
+{{--                                        <i class="icofont-ui-rating"></i>--}}
+{{--                                        <i class="icofont-ui-rating"></i>--}}
+{{--                                        <i class="icofont-ui-rating"></i>--}}
+{{--                                    </span>--}}
                             </div>
                         </div>
-                        <div class="instructor-footer">
-                            <ul class="lab-ul d-flex flex-wrap justify-content-between align-items-center">
-                                <li><i class="icofont-book-alt"></i> 08 courses</li>
-                                <li><i class="icofont-users-alt-3"></i> 30 students</li>
-                            </ul>
-                        </div>
+{{--                        <div class="instructor-footer">--}}
+{{--                            <ul class="lab-ul d-flex flex-wrap justify-content-between align-items-center">--}}
+{{--                                <li><i class="icofont-book-alt"></i> 08 courses</li>--}}
+{{--                                <li><i class="icofont-users-alt-3"></i> 30 students</li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 @empty
                 @endforelse
             </div>
-            <div class="text-center footer-btn">
-                <p>Want to help people learn, grow and achieve more in life?<a href="#">Become an instructor</a></p>
-            </div>
+{{--            <div class="text-center footer-btn">--}}
+{{--                <p>Want to help people learn, grow and achieve more in life?<a href="#">Become an instructor</a></p>--}}
+{{--            </div>--}}
         </div>
     </div>
 </div>

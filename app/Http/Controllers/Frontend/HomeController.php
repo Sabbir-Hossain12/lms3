@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Achievement;
 use App\Models\Blog;
 use App\Models\Course;
 use App\Models\CourseClass;
@@ -32,9 +33,12 @@ class HomeController extends Controller
         $randomCourse = Course::where('status', 1)->inRandomOrder()->limit(6)->get();
         $courseClasses = CourseClass::where('status', 1)->where('is_featured', 1)->orderBy('position', 'asc')->limit(6)->get();
 
+        $achievements = Achievement::where('status', 1)->limit(4)->get();
+
 
         return view('frontend.pages.home', compact(['heroBanner', 'randomCourse', 'courseClasses',
-            'teachers', 'about', 'services', 'testimonials', 'testimonialSetting', 'blogs', 'featuredCourses']));
+            'teachers', 'about', 'services', 'testimonials', 'testimonialSetting', 'blogs', 'featuredCourses',
+        'achievements']));
 
     }
 

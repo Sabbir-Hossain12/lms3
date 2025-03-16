@@ -43,6 +43,7 @@ Route::get('/search-results', [CourseController::class,'searchResults'])->name('
 Route::get('/course-list', [CourseController::class,'courseList'])->name('course-list');
 Route::get('/course-details/{slug}', [CourseController::class,'courseDetails'])->name('course-details');
 Route::get('/course-by-class/{slug}', [CourseController::class,'coursesByClass'])->name('course-by-class');
+Route::post('/course-by-keyword', [CourseController::class,'coursesByKeyword'])->name('course.search');
 //Class
 Route::get('/class-list', [CourseController::class,'classList'])->name('class-list');
 
@@ -57,7 +58,7 @@ Route::post('/assignment-submit',[CourseController::class,'assignmentSubmit'])->
 Route::post('/quiz-submit',[CourseController::class,'quizSubmit'])->name('quiz.submit');
 
 //Teacher Details
-Route::get('/teachers',[TeacherController::class,'teachersPage'])->name('teacher.page');
+Route::get('/team-list',[TeacherController::class,'teachersPage'])->name('teacher.page');
 Route::get('/teacher_details/{slug}',[TeacherController::class,'teachersDetails'])->name('teacher.details');
 
 
@@ -69,11 +70,16 @@ Route::get('/blog-details/{slug}',[BlogController::class,'blogDetails'])->name('
 Route::get('/checkout/{slug}', [OrderController::class,'checkoutPage'])->middleware(\App\Http\Middleware\StudentMiddleware::class)->name('checkout');
 Route::post('/order/submit', [OrderController::class,'orderSubmit'])->middleware(\App\Http\Middleware\StudentMiddleware::class)->name('order.submit');
 
+
+//dynamic Pages
+Route::get('/about-us', [HomeController::class,'aboutPage'])->name('about-us');
+
 Route::get('/contact-us', [HomeController::class,'contactPage'])->name('contact-us');
 //pages
 Route::prefix('pages')->group(function () {
 
     Route::get('/{slug}', [HomeController::class,'page'])->name('page');
+
 });
 
 //ChatGPT
@@ -89,7 +95,6 @@ Route::prefix('user')->name('user.')->group(function ()
     Route::post('/login/submit', [StudentAuthController::class,'login'])->name('login');
     Route::get('/register', [StudentAuthController::class,'registerPage'])->name('register-page');
     Route::post('/register/submit', [StudentAuthController::class,'register'])->name('register');
-
 
     Route::get('/phone', [StudentAuthController::class,'loginPhonePage'])->name('phone-page');
     Route::post('/phone/verify', [StudentAuthController::class,'verifyPhoneNumber'])->name('phone-verify');

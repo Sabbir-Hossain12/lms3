@@ -8,10 +8,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="pageheader-content text-center">
-                        <h2>Courses</h2>
+                        <h2>Categories</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Course Page</li>
                             </ol>
                         </nav>

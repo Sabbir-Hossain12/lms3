@@ -34,13 +34,49 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
 
-                            <li>
-                                <a href="{{ route('class-list') }}">Categories</a>
+                            <li class="menu-item-has-children">
+                                <a href="javascript:void(0)">About</a>
+                                <ul class="lab-ul">
+                                    <li>
+                                        <a href="{{ route('class-list') }}">About Us</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('course-list') }}">Courses</a>
+                                    </li>
+                                </ul>
                             </li>
 
-                            <li>
-                                <a href="{{ route('course-list') }}">Courses</a>
+                            <li class="menu-item-has-children">
+                                <a href="javascript:void(0)">Admission</a>
+                                <ul class="lab-ul">
+                                    <li>
+                                        <a href="{{ route('class-list') }}">Categories</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('course-list') }}">Courses</a>
+                                    </li>
+
+                                </ul>
                             </li>
+
+
+
+
+
+                            <li class="menu-item-has-children">
+                                <a href="javascript:void(0)">Academics</a>
+                                <ul class="lab-ul">
+                                    <li>
+                                        <a href="{{ route('class-list') }}">Categories</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('course-list') }}">Courses</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
 
                             <li>
                                 <a href="{{ route('blog-list') }}">Blog</a>

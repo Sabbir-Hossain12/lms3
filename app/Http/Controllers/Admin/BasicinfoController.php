@@ -51,39 +51,40 @@ class BasicinfoController extends Controller
         $basicInfo->meta_desc=$request->meta_desc;
         $basicInfo->meta_keyword=$request->meta_keyword;
         $basicInfo->opening_hours_text=$request->opening_hours_text;
-        
+        $basicInfo->map_iframe = $request->map_iframe;
+
         if ($request->hasFile('dark_logo')) {
-            
+
             $file = $request->file('dark_logo');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/logo/', $filename);
             $basicInfo->dark_logo ='backend/upload/logo/' . $filename;
         }
-        
+
         if ($request->hasFile('light_logo')) {
-            
+
             $file = $request->file('light_logo');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/logo/', $filename);
             $basicInfo->light_logo ='backend/upload/logo/' . $filename;
         }
-        
+
         if ($request->hasFile('meta_image')) {
-            
+
             $file = $request->file('meta_image');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/meta/', $filename);
             $basicInfo->meta_image ='backend/upload/meta/' . $filename;
         }
-        
+
         if ($request->hasFile('fav_icon')) {
-            
+
             $file = $request->file('fav_icon');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/favIcon/', $filename);
             $basicInfo->fav_icon ='backend/upload/favIcon/' . $filename;
         }
-        
+
        $save= $basicInfo->save();
 
         if ($save) {
@@ -92,7 +93,7 @@ class BasicinfoController extends Controller
         }
 
         return redirect()->back();
-        
+
     }
 
     /**
@@ -136,59 +137,60 @@ class BasicinfoController extends Controller
         $basicInfo->meta_desc=$request->meta_desc;
         $basicInfo->meta_keyword=$request->meta_keyword;
         $basicInfo->opening_hours_text=$request->opening_hours_text;
-        
+        $basicInfo->map_iframe = $request->map_iframe;
+
         if ($request->hasFile('dark_logo')) {
-            
+
             if ($basicInfo->dark_logo && file_exists(public_path($basicInfo->dark_logo))) {
-                
+
                 unlink(public_path($basicInfo->dark_logo));
             }
-            
+
             $file = $request->file('dark_logo');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/logo/', $filename);
             $basicInfo->dark_logo ='backend/upload/logo/' . $filename;
         }
-        
+
         if ($request->hasFile('light_logo')) {
-            
+
             if ($basicInfo->light_logo && file_exists(public_path($basicInfo->light_logo))) {
-                
+
                 unlink(public_path($basicInfo->light_logo));
             }
-            
+
             $file = $request->file('light_logo');
             $filename = time() .uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/logo/', $filename);
             $basicInfo->light_logo ='backend/upload/logo/' . $filename;
         }
-        
+
         if ($request->hasFile('meta_image')) {
-            
+
             if ($basicInfo->meta_image && file_exists(public_path($basicInfo->meta_image))) {
-                
+
                 unlink(public_path($basicInfo->meta_image));
             }
-            
+
             $file = $request->file('meta_image');
             $filename = time() .uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/meta/', $filename);
             $basicInfo->meta_image ='backend/upload/meta/' . $filename;
         }
-        
+
           if ($request->hasFile('fav_icon')) {
-              
+
                 if ($basicInfo->fav_icon && file_exists(public_path($basicInfo->fav_icon))) {
-                
+
                 unlink(public_path($basicInfo->fav_icon));
             }
-            
+
             $file = $request->file('fav_icon');
             $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
             $file->move('backend/upload/favIcon/', $filename);
             $basicInfo->fav_icon ='backend/upload/favIcon/' . $filename;
         }
-        
+
        $save= $basicInfo->save();
 
         if ($save) {

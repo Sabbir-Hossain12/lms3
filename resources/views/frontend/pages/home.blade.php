@@ -20,7 +20,7 @@
 
     @include('frontend.includes.blog')
 
-{{--    @include('frontend.includes.achievement')--}}
+    @include('frontend.includes.achievement')
 
 
     @include('frontend.includes.footer')

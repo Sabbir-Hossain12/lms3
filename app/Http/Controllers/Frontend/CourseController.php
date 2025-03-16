@@ -20,6 +20,14 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
 
+    public function coursesByKeyword(Request $request)
+    {
+        $keyword = $request->keyword;
+        $courses = Course::where('title', 'like', '%'.$keyword.'%')->where('status', 1)->with('teacher')->get();
+
+        return view('frontend.pages.course.search-course', compact('courses','keyword'));
+    }
+
     public function courseDetails(string $slug)
     {
         $courseDetails = Course::where('slug', $slug)->with('teacher', 'subjects', 'class', 'lessons',

@@ -15,21 +15,29 @@
                         <h6 class="subtitle text-uppercase fw-medium">{{ $heroBanner->short_title ?? '' }}</h6>
                         <h2 class="title"><span class="d-lg-block">{{ $heroBanner->main_title ?? '' }}</h2>
                         <p class="desc">{{ $heroBanner->sub_title ?? '' }}</p>
-                        <form action="/">
+                        <form action="{{ route('course.search') }}" method="post">
+                            @csrf
                             <div class="banner-icon">
                                 <i class="icofont-search"></i>
                             </div>
-                            <input type="text" placeholder="Keywords of your course">
+
+                            <input type="text" name="keyword" placeholder="Keywords of your course">
+
                             <button type="submit">Search Course</button>
                         </form>
+
                         <div class="banner-catagory d-flex flex-wrap">
                             <p>Most Popular : </p>
-{{--                            <ul class="lab-ul d-flex flex-wrap">--}}
-{{--                                <li><a href="#">Figma</a></li>--}}
-{{--                                <li><a href="#">Adobe XD</a></li>--}}
-{{--                                <li><a href="#">illustration</a></li>--}}
-{{--                                <li><a href="#">Photoshop</a></li>--}}
-{{--                            </ul>--}}
+                            <ul class="lab-ul d-flex flex-wrap">
+                                @forelse($courseClasses->take(3) as $category)
+                                <li>
+                                    <a href="{{ route('course-by-class', $category->slug) }}">
+                                        {{ $category->title ?? '' }}
+                                    </a>
+                                </li>
+                                @empty
+                                @endforelse
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -42,14 +50,14 @@
         </div>
     </div>
 {{--    <div class="all-shapes"></div>--}}
-    <div class="cbs-content-list d-none">
-        <ul class="lab-ul">
-            <li class="ccl-shape shape-1"><a href="#">16M Students Happy</a></li>
-            <li class="ccl-shape shape-2"><a href="#">130K+ Total Courses</a></li>
-            <li class="ccl-shape shape-3"><a href="#">89% Successful Students</a></li>
-            <li class="ccl-shape shape-4"><a href="#">23M+ Learners</a></li>
-            <li class="ccl-shape shape-5"><a href="#">36+ Languages</a></li>
-        </ul>
-    </div>
+{{--    <div class="cbs-content-list d-none">--}}
+{{--        <ul class="lab-ul">--}}
+{{--            <li class="ccl-shape shape-1"><a href="#">16M Students Happy</a></li>--}}
+{{--            <li class="ccl-shape shape-2"><a href="#">130K+ Total Courses</a></li>--}}
+{{--            <li class="ccl-shape shape-3"><a href="#">89% Successful Students</a></li>--}}
+{{--            <li class="ccl-shape shape-4"><a href="#">23M+ Learners</a></li>--}}
+{{--            <li class="ccl-shape shape-5"><a href="#">36+ Languages</a></li>--}}
+{{--        </ul>--}}
+{{--    </div>--}}
 </section>
 <!-- banner section ending here -->
