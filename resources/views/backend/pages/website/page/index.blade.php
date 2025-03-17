@@ -71,7 +71,7 @@
 
                             </thead>
                             <tbody>
-                            @forelse($pages as $index=>$page) 
+                            @forelse($pages as $index=>$page)
                             <tr>
                             <td>{{$index+1}}</td>
                             <td>
@@ -81,8 +81,8 @@
                             </td>
                             <td>{{$page->name}}</td>
                             <td>
-                                <div class="d-flex gap-3"> 
-                                
+                                <div class="d-flex gap-3">
+
                                 @if($page->status==1)
                                     <a class="status"  href=""> <i
                                                 class="fa-solid fa-toggle-on fa-2x"></i>
@@ -276,7 +276,7 @@
             ClassicEditor.create(document.querySelector('#blogDesc'),{
                 ckfinder:
                     {
-                        uploadUrl: "{{route('admin.blog.ckeditor.upload', ['_token' => csrf_token() ])}}",
+                        uploadUrl: "{{route('admin.ckeditor.upload', ['_token' => csrf_token() ])}}",
                     }
             })
                 .then(newEditor => {
@@ -290,7 +290,7 @@
             ClassicEditor.create(document.querySelector('#eBlogDesc'),{
                 ckfinder:
                     {
-                        uploadUrl: "{{route('admin.blog.ckeditor.upload', ['_token' => csrf_token() ])}}",
+                        uploadUrl: "{{route('admin.ckeditor.upload', ['_token' => csrf_token() ])}}",
                     }
             })
                 .then(newEditor => {
@@ -300,12 +300,9 @@
                     console.error(error);
                 });
 
-
-
-
             var token = $("input[name='_token']").val();
 
-            //Show Data through Datatable 
+            //Show Data through Datatable
             let blogTable = $('#blogTable').DataTable();
 
 
