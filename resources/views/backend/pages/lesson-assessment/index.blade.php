@@ -253,6 +253,7 @@
                     if (result.isConfirmed) {
                         // Submit the form if confirmed
                         $(formId).submit();
+                        
                     }
                 });
             });
