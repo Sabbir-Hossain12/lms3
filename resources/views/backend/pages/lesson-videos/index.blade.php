@@ -59,13 +59,13 @@
                                         <input class="form-control" type="text" id="duration" name="duration" placeholder="1 Hour">
                                     </div>
 
-                                  
+
 
                                 </div>
                             </div>
                             <div class="col-lg-6">
 
-                               
+
 
                                 <div class="mb-3">
                                     <label for="position" class="form-label">Position *</label>
@@ -202,7 +202,7 @@
     <script>
         $(document).ready(function () {
             // Handle delete button click
-            $('.delete-btn').on('click', function () {
+            $(document).on('click','.delete-btn', function () {
                 let formId = '#delete-form-' + $(this).data('id');
 
                 Swal.fire({

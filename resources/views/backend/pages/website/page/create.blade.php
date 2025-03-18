@@ -18,7 +18,6 @@
                         <li class="breadcrumb-item active">Create Page</li>
                     </ol>
                 </div>
-
             </div>
         </div>
     </div>
@@ -124,7 +123,6 @@
                         <div class="text-center mt-4 d-grid">
                             <button type="submit" class="btn  btn-primary">Update</button>
                         </div>
-
                     </div>
                 </div>
             </div> <!-- end col -->

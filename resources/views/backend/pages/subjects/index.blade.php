@@ -36,7 +36,7 @@
                                         <input class="form-control" type="text" placeholder="Course Title"
                                                id="name" name="title" required>
                                     </div>
-                                    
+
 
                                     <div class="mb-3">
                                         <label for="subtitle" class="form-label">Subtitle</label>
@@ -46,7 +46,7 @@
                                         <label for="icon" class="form-label">Icon</label>
                                         <input class="form-control" type="text" id="icon" name="icon" required>
                                     </div>
-                                    
+
                                     <div class="mb-3">
                                         <label for="pageStatus" class="form-label">Featured Status</label>
                                         <select id="pageStatus" class="form-select form-control" name="is_featured" required>
@@ -54,9 +54,9 @@
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
-                                    
 
-                                   
+
+
 
                                 </div>
                             </div>
@@ -70,8 +70,8 @@
                                     <textarea id="desc" name="desc" class="form-control" required></textarea>
                                 </div>
 
-                             
-                                
+
+
                                 <div class="mb-3">
                                     <label for="position" class="form-label">Position</label>
                                     <input class="form-control" type="number" id="position" name="position" required>
@@ -130,13 +130,13 @@
             <div class="text-center d-grid">
                 <button type="submit" class="btn  btn-primary">Update</button>
             </div>
-            
+
         </div> <!-- end col -->
 
 
-       
+
     </form>
-    
+
     <div class="row mt-4">
         <div class="col-12">
             <div class="card">
@@ -146,7 +146,7 @@
                         <h4 class="card-title">Subject List</h4>
                         {{--                       @can('Create Admin')--}}
                         {{--                       @if(Auth::guard('admin')->user()->can('Create Admin'))--}}
-                       
+
                         {{--                        @endcan--}}
                         {{--                        @endif--}}
                     </div>
@@ -224,10 +224,10 @@
 
 
             let adminTable = $('#adminTable').DataTable({
-                
+
             });
-            
-            
+
+
         });
 
 
@@ -236,7 +236,7 @@
     <script>
         $(document).ready(function () {
             // Handle delete button click
-            $('.delete-btn').on('click', function () {
+            $(document).on('click','.delete-btn', function () {
                 let formId = '#delete-form-' + $(this).data('id');
 
                 Swal.fire({

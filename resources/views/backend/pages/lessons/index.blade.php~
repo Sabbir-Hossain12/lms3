@@ -194,7 +194,7 @@
     <script>
         $(document).ready(function () {
             // Handle delete button click
-            $(document).on('click', '.delete-btn', function () {
+            $('document').on('click', function () {
                 let formId = '#delete-form-' + $(this).data('id');
 
                 Swal.fire({

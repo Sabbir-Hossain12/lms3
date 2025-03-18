@@ -15,7 +15,7 @@
 
     <!-- KaTeX -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" rel="stylesheet">
-
+   
 
 @endpush
 
@@ -56,15 +56,15 @@
 
                                         </select>
                                     </div>
-
+                                    
                                     <div class="mb-3">
 
                                         <label class="form-label">Select Question Image </label>
                                         <input type="file" class="form-control" name="question_image">
-
+                                        
                                     </div>
-
-
+                                    
+                                    
                                     <div class="mb-3">
                                         <label for="question_text" class="form-label">Question Text *</label>
                                         <textarea class="form-control" id="question_text" name="question_text" cols="3" rows="1"></textarea>
@@ -74,7 +74,7 @@
                                         <label for="desc" class="form-label">Question Marks *</label>
                                         <input type="number" class="form-control" id="marks" min="1" name="marks" required>
                                     </div>
-
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -228,14 +228,14 @@
                     ['misc', ['codeview']]
                 ],
             });
-
-
+            
+    
         });
-
-
+        
+        
         $(document).ready(function () {
-
-
+      
+            
             // ClassicEditor
             //     .create(document.querySelector('#question_text'),
             //         {
@@ -272,12 +272,12 @@
             let adminTable = $('#adminTable').DataTable({});
 
 
-
+        
         });
+        
 
 
-
-
+    
 
         $(document).ready(function () {
             let optionCount = 1;
@@ -291,8 +291,8 @@
                     ['misc', ['codeview']]
                 ],
             });
-
-
+            
+            
             // let optionCount = 1;
 
             // Add new option
@@ -303,8 +303,8 @@
 
                                      <button type="button" class="btn btn-danger remove-option"><i class="mdi mdi-close"></i></button>
                                  </div>`;
-
-
+                
+                
             $('#optionMultiple').append(newOption);
 
                 // Reinitialize Summernote for the newly added textarea
@@ -317,8 +317,8 @@
                         ['misc', ['codeview']]
                     ]
                 });
-
-
+            
+            
             });
 
 
@@ -335,7 +335,7 @@
         //Delete Question
         $(document).ready(function () {
             // Handle delete button click
-            $(document).on('click','.delete-btn', function () {
+            $('.delete-btn').on('click', function () {
                 let formId = '#delete-form-' + $(this).data('id');
 
                 Swal.fire({

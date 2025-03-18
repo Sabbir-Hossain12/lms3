@@ -48,10 +48,10 @@
                                     <div class="mb-3">
                                         <label class="form-label">Assessment Type *</label>
                                         <select class="form-control" name="type" id="assessmentType" required>
-                                            
+
                                             <option value="quiz">Quiz</option>
                                             <option value="assignment">Assignment</option>
-                                            
+
                                         </select>
                                     </div>
 
@@ -73,11 +73,11 @@
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                
+
                                 <div class="mb-3" id="startTimeDiv">
                                     <label for="start_time" class="form-label">Start Date </label>
                                     <input class="form-control" type="datetime-local" id="start_time" step="any" value="{{now()}}" name="start_time" required>
@@ -92,8 +92,8 @@
                                     <label for="end_time" class="form-label">Duration (Minutes)</label>
                                     <input class="form-control" type="number" min="1" id="duration" value="2" name="duration" >
                                 </div>
-                                
-                                
+
+
 {{--                                <div class="mb-3" id="dueTimeDiv">--}}
 {{--                                    <label for="due_date" class="form-label">Due Date </label>--}}
 {{--                                    <input class="form-control" type="datetime-local" name="due_date">--}}
@@ -104,7 +104,7 @@
                                     <input class="form-control" type="number" id="totalMarks" name="total_marks"
                                            placeholder="Total Marks" required>
                                 </div>
-                                
+
                                 <div class="mb-3">
                                         <label for="attempt_type" class="form-label">Attempt Type *</label>
                                         <select id="attempt_type" class="form-select form-control" name="attempt_type" required>
@@ -112,9 +112,9 @@
                                             <option value="Multiple">Multiple</option>
                                         </select>
                                 </div>
-                                
 
-                             
+
+
 
                             </div>
                         </div>
@@ -181,7 +181,7 @@
                                             <span class="badge bg-danger">Inactive</span>
                                         @endif
                                     </td>
-                                    
+
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a href="{{route('admin.assessment-answer',$assessment->id)}}" class="btn btn-sm btn-success"><i class="fas fa-a"></i></a>
@@ -230,7 +230,7 @@
 
             let adminTable = $('#adminTable').DataTable({});
         });
-        
+
     </script>
 
 
@@ -238,7 +238,7 @@
         //Delete Assessment
         $(document).ready(function () {
             // Handle delete button click
-            $('.delete-btn').on('click', function () {
+            $(document).on('click','.delete-btn', function () {
                 let formId = '#delete-form-' + $(this).data('id');
 
                 Swal.fire({
