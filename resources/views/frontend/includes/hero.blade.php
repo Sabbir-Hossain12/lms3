@@ -1,10 +1,61 @@
 <!-- banner section start here -->
 <style>
+    @media (min-width: 576px) {
+        .banner-section .section-wrapper .banner-content .desc {
+            font-size: 17px !important;
+            line-height: 1.5;
+        }
+    }
+    
     .banner-section {
         background-image: url("{{asset($heroBanner->video_thumbnail_img)}}") !important;
         background-size: cover;
         /*padding-top: 170px;*/
+        position: relative !important;
     }
+    
+    
+    .guidance
+    {
+        color: rgb(255, 255, 255) !important;
+        border-radius: 0px 2px 2px 0px;
+        background: #f16126;
+    } 
+    .apply
+    {
+        color: rgb(255, 255, 255) !important;
+        border-radius: 0px 2px 2px 0px;
+        background: #f16126;
+        
+    } 
+    .programs
+    {
+        color: rgb(255, 255, 255) !important;
+        border-radius: 0px 2px 2px 0px;
+        background: #f16126;
+        
+      
+    }
+    
+    #heroButton
+    {
+        position: absolute;
+        left: 85%;
+        bottom:140px;
+    }
+    
+    @media (min-width: 1200px) {
+         .guidance, .apply, .programs {
+            padding: 15px;
+        }
+    }
+    @media (min-width: 768px) {  
+        .guidance, .apply, .programs {
+            padding: 10px;
+            display: inline-block;
+        }
+    }
+  
 </style>
 <section class="banner-section style-1">
     <div class="container">
@@ -44,6 +95,11 @@
                 <div class="col-xxl-7 col-xl-6">
                     <div class="banner-thumb">
                         <img src="{{asset('frontend')}}/assets/images/banner/01.png" alt="img">
+                    </div>
+                    <div id="heroButton">
+                    <a href="#" class="guidance mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Guidance</span> </a>
+                    <a href="#" class="apply mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Apply Today</span></a>
+                    <a href="#" class="programs mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Programs</span></a>
                     </div>
                 </div>
             </div>

@@ -163,24 +163,25 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
 
     //about Sections
     Route::resource('/abouts', AboutController::class)->names('about');
-
+    
     //testimonials
     Route::resource('/testimonials', TestimonialController::class)->names('testimonial');
     Route::get('/testimonial/data', [TestimonialController::class, 'getData'])->name('testimonials.data');
     Route::post('/testimonial/change-status', [TestimonialController::class, 'changeStatus'])->name('testimonials.change-status');
     Route::resource('/testimonial-settings', TestimonialSettingController::class)->names('testimonial-settings');
-
+    
     //Blogs
     Route::resource('/blogs', BlogController::class)->names('blog');
     Route::get('/blog/data', [BlogController::class, 'getData'])->name('blog.data');
     Route::post('/blog/change-status', [BlogController::class, 'changeStatus'])->name('blog.change-status');
     Route::post('/upload-ckeditor-image', [BlogController::class, 'uploadCkeditorImage'])->name('blog.ckeditor.upload');
-
+    
     //pages
     Route::resource('/pages', PageController::class)->names('page');
     Route::post('/upload-ckeditor-image', [PageController::class, 'uploadCkeditorImage'])->name('ckeditor.upload');
     Route::resource('/achievements', AchievementController::class)->names('achievement');
     Route::post('/achievement/change-status', [AchievementController::class, 'changeAchievementStatus'])->name('achievement.status');
-
+    
     //contact
+    
 });

@@ -317,12 +317,8 @@
                         ['misc', ['codeview']]
                     ]
                 });
-
-
             });
-
-
-
+            
             // Remove option
             $(document).on('click', '.remove-option', function () {
                 $(this).closest('.option-item').remove();
