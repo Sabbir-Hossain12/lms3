@@ -27,6 +27,7 @@
     @include('frontend.includes.popular-categories')
 
     @include('frontend.includes.featured-courses')
+    @include('frontend.includes.banner')
 
     @include('frontend.includes.about')
 
