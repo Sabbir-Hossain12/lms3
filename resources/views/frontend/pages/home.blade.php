@@ -41,6 +41,7 @@
 
     @include('frontend.includes.achievement')
     @include('frontend.includes.feedback')
+    @include('frontend.includes.how-apply')
 
     @include('frontend.includes.footer')
     
