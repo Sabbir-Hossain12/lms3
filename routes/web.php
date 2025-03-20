@@ -73,10 +73,13 @@ Route::post('/order/submit', [OrderController::class,'orderSubmit'])->middleware
 //dynamic Pages
 Route::get('/about-us', [HomeController::class,'aboutPage'])->name('about-us');
 Route::get('/contact-us', [HomeController::class,'contactPage'])->name('contact-us');
+Route::get('/faq', [HomeController::class,'faqPage'])->name('faq');
 
 //Admission
 Route::get('/how-to-apply', [HomeController::class,'howToApplyPage'])->name('how-to-apply');
 Route::post('/apply-now', [HomeController::class,'applyNow'])->name('apply-now');
+Route::get('/scholarship', [HomeController::class,'scholarshipPage'])->name('scholarship');
+Route::get('/date-timeline', [HomeController::class,'dateTimelinePage'])->name('date-timeline');
 
 //pages
 Route::prefix('pages')->group(function () {

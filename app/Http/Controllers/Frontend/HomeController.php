@@ -117,4 +117,21 @@ class HomeController extends Controller
 
         return redirect()->route('home')->with('success', 'Application submitted successfully');
     }
+
+    public function faqPage()
+    {
+        return view('frontend.pages.info.faq');
+    }
+
+
+    public function scholarshipPage()
+    {
+        $blogs = Blog::where('status', 1)->limit(3)->get();
+        return view('frontend.pages.admission.scholarship', compact('blogs'));
+    }
+
+    public function dateTimelinePage()
+    {
+        return view('frontend.pages.admission.dates-deadline');
+    }
 }

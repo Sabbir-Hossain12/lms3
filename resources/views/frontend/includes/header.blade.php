@@ -36,17 +36,21 @@
 
                             <li class="menu-item-has-children">
                                 <a href="javascript:void(0)">About</a>
+                                
                                 <ul class="lab-ul">
-                                    <li>
-                                        <a href="{{ route('about-us') }}">About Us</a>
-                                    </li>
-
                                     @forelse(\App\Models\Page::where('status', 1)->get() as $page)
                                         <li>
                                             <a href="{{ route('page', $page->slug) }}">{{ $page->title }}</a>
                                         </li>
                                     @empty
                                     @endforelse
+                                    
+                                    <li>
+                                        <a href="{{ route('about-us') }}">About Us</a>
+                                    </li>
+                                        <li>
+                                            <a href="{{ route('faq') }}">FAQ</a>
+                                        </li>
                                 </ul>
                             </li>
 
@@ -55,6 +59,14 @@
                                 <ul class="lab-ul">
                                     <li>
                                         <a href="{{ route('how-to-apply') }}">How to Apply</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('scholarship') }}">Scholarship</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('date-timeline') }}">Dates and Timeline</a>
                                     </li>
 
 {{--                                    <li>--}}
