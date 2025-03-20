@@ -37,12 +37,7 @@
       
     }
     
-    #heroButton
-    {
-        position: absolute;
-        left: 85%;
-        bottom:140px;
-    }
+    
     
     @media (min-width: 1200px) {
          .guidance, .apply, .programs {
@@ -54,9 +49,27 @@
             padding: 10px;
             display: inline-block;
         }
+        
+       
     }
-  
+
+    @media (min-width: 1000px) {
+        
+        #heroButton
+        {
+            display: block !important;
+            position: absolute;
+            left: 85%;
+            bottom:120px;
+        }
+    }
+
+    .category-item .category-inner {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+    }
+
 </style>
+
 <section class="banner-section style-1">
     <div class="container">
         <div class="section-wrapper">
@@ -96,10 +109,10 @@
                     <div class="banner-thumb">
                         <img src="{{asset('frontend')}}/assets/images/banner/01.png" alt="img">
                     </div>
-                    <div id="heroButton">
-                    <a href="#" class="guidance mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Guidance</span> </a>
-                    <a href="#" class="apply mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Apply Today</span></a>
-                    <a href="#" class="programs mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Programs</span></a>
+                    <div id="heroButton" class="d-none">
+                        <a href="#" class="guidance mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Guidance</span> </a>
+                        <a href="#" class="apply mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Apply Today</span></a>
+                        <a href="#" class="programs mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Programs</span></a>
                     </div>
                 </div>
             </div>

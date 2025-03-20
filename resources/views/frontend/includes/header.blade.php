@@ -41,10 +41,6 @@
                                         <a href="{{ route('about-us') }}">About Us</a>
                                     </li>
 
-                                    <li>
-                                        <a href="{{ route('blog-list') }}">Blogs</a>
-                                    </li>
-
                                     @forelse(\App\Models\Page::where('status', 1)->get() as $page)
                                         <li>
                                             <a href="{{ route('page', $page->slug) }}">{{ $page->title }}</a>
@@ -84,7 +80,9 @@
                                 </ul>
                             </li>
 
-
+                            <li>
+                                <a href="{{ route('blog-list') }}">Blogs</a>
+                            </li>
 
                             <li><a href="{{ route('contact-us') }}">Contact</a></li>
                         </ul>

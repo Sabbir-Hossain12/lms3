@@ -6,7 +6,7 @@
             <h2 class="title">Popular Category For Learn</h2>
         </div>
         <div class="section-wrapper">
-            <div class="row g-2 justify-content-center row-cols-xl-6 row-cols-md-3 row-cols-sm-2 row-cols-1">
+            <div class="row justify-content-center row-cols-xl-6 row-cols-md-3 row-cols-sm-2 row-cols-1">
                 @forelse($courseClasses as $category)
                 <div class="col">
                     <div class="category-item text-center">

@@ -6,7 +6,7 @@
             <h2 class="title">Pick A Course To Get Started</h2>
         </div>
         <div class="section-wrapper">
-            <div class="row g-4 justify-content-center row-cols-xl-3 row-cols-md-2 row-cols-1">
+            <div class="row g-4 justify-content-center row-cols-xl-4 row-cols-md-2 row-cols-1">
                 @forelse($featuredCourses as $course)
                 <div class="col">
                     <div class="course-item">
