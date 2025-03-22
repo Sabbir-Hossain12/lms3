@@ -99,7 +99,7 @@ class HomeController extends Controller
         $applyForm->last_name=$request->last_name;
         $applyForm->email=$request->email;
         $applyForm->phone=$request->phone;
-        $applyForm->highest_education= json_encode($request->highest_education);
+        $applyForm->highest_education= $request->highest_education;
         $applyForm->why_chose=$request->why_chose;
         $applyForm->why_interested=$request->why_interested;
 
@@ -113,7 +113,7 @@ class HomeController extends Controller
         $applyForm->save();
 
 
-        return redirect()->route('home')->with('success', 'Application submitted successfully');
+        return redirect()->back()->with('success', 'Application submitted successfully');
     }
 
     public function faqPage()

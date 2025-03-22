@@ -43,6 +43,18 @@ class HowApplyController extends Controller
        $howApply->icon_3 = $request->icon_3;
        $howApply->title_3 = $request->title_3;
        $howApply->description_3 = $request->description_3;
+
+        $howApply->long_desc = $request->long_desc;
+
+
+        if ($request->hasFile('form_file')) {
+            
+            $file = $request->file('form_file');
+            $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('backend/upload/how-apply/'), $filename);
+            $howApply->form_file = 'backend/upload/how-apply/'. $filename;
+
+        }
        
        $howApply->save();
        return redirect()->back()->with('success', 'Data updated successfully');
@@ -82,6 +94,22 @@ class HowApplyController extends Controller
         $howApply->icon_3 = $request->icon_3;
         $howApply->title_3 = $request->title_3;
         $howApply->description_3 = $request->description_3;
+        $howApply->long_desc = $request->long_desc;
+        
+        
+        if ($request->hasFile('form_file')) {
+
+            if ($howApply->form_file && file_exists(public_path($howApply->form_file))) {
+                unlink(public_path($howApply->form_file));
+    
+            }
+            $file = $request->file('form_file');
+            $filename = time() .uniqid(). '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('backend/upload/how-apply/'), $filename);
+            $howApply->form_file = 'backend/upload/how-apply/'. $filename;
+            
+        }
+        
 
         $howApply->save();
         return redirect()->back()->with('success', 'Data updated successfully');

@@ -243,6 +243,39 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span data-key="t-apps">Admissions</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('admin.admission-application.index') }}">
+                                <span data-key="t-calendar">Admission Application</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin.scholarship.index') }}">
+                                <span data-key="t-calendar">Scholarships</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin.scholarship-application.index') }}">
+                                <span data-key="t-calendar">Scholarship Application</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin.dates-deadlines.index') }}">
+                                <span data-key="t-calendar">Dates and Deadlines</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
 
             </ul>
 

@@ -9,7 +9,7 @@
             margin-bottom: 8px; /* Space between each option */
         }
 
-        .form-group2 input[type="checkbox"] {
+        .form-group2 input[type="radio"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
@@ -118,32 +118,32 @@
                     <div class="d-flex flex-column">
                         <p>What is your highest level of education? <span class="required">*</span></p>
                         <div class="form-group2">
-                            <input type="checkbox" id="highschool" value="highschool" name="highest_education[]">
+                            <input type="radio" id="highschool" value="highschool" name="highest_education">
                             <label for="highschool">High school diploma or GED</label>
                         </div>
 
                         <div class="form-group2">
-                            <input type="checkbox" id="somecollege" value="somecollege" name="highest_education[]">
+                            <input type="radio" id="somecollege" value="somecollege" name="highest_education">
                             <label for="somecollege">Some college, but no degree earned</label>
                         </div>
 
                         <div class="form-group2">
-                            <input type="checkbox" id="bachelor" value="bachelor" name="highest_education[]">
+                            <input type="radio" id="bachelor" value="bachelor" name="highest_education">
                             <label for="bachelor">Bachelor's degree</label>
                         </div>
 
                         <div class="form-group2">
-                            <input type="checkbox" id="master" value="master" name="highest_education[]">
+                            <input type="radio" id="master" value="master" name="highest_education">
                             <label for="master">Master's degree</label>
                         </div>
 
                         <div class="form-group2">
-                            <input type="checkbox" id="doctorate" value="doctorate" name="highest_education[]">
+                            <input type="radio" id="doctorate" value="doctorate" name="highest_education">
                             <label for="doctorate">Doctorate</label>
                         </div>
 
                         <div class="form-group2">
-                            <input type="checkbox" value="other" id="other" name="highest_education[]">
+                            <input type="radio" value="other" id="other" name="highest_education">
                             <label for="other">Other</label>
                         </div>
                     </div>

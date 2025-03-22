@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdmissionApplicationController;
 use App\Http\Controllers\Admin\AssessmentAnswerController;
 use App\Http\Controllers\Admin\AssessmentController;
 use App\Http\Controllers\Admin\AssessmentGradeController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DateDeadlineController;
 use App\Http\Controllers\Admin\EnrolmentController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HerobannerController;
@@ -26,6 +28,8 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ScholarshipApplicationController;
+use App\Http\Controllers\Admin\ScholarshipController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
@@ -204,5 +208,19 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
     
     //How to Apply
     Route::resource('/how-applies', HowApplyController::class)->names('how-apply');
+    
+    //Admission Applications
+    Route::resource('/admission-applications', AdmissionApplicationController::class)->names('admission-application');
+    Route::post('/admission-application/change-status', [AdmissionApplicationController::class, 'changeStatus'])->name('admission-application.status');
+    
+    //Scholarships
+    Route::resource('/scholarships', ScholarshipController::class)->names('scholarship');
+    Route::post('/scholarship/change-status', [ScholarshipController::class, 'changeStatus'])->name('scholarship.status');
+    
+    //Scholarship Applications
+    Route::resource('/scholarship-applications', ScholarshipApplicationController::class)->names('scholarship-application');
+    
+    //Dates and Deadlines
+    Route::resource('/dates-and-deadlines', DateDeadlineController::class)->names('dates-deadlines');
     
 });

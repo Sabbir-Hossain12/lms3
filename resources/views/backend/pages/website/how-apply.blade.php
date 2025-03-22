@@ -72,6 +72,14 @@
                                                     <label for="description_2" class="form-label">Description 2</label>
                                                     <textarea class="form-control" name="description_2" id="description_2" >{{ $howApply->description_2 ?? '' }}</textarea>
                                                 </div>
+
+                                                <div class="mb-3">
+                                                    <label for="form_file" class="form-label">Form File</label>
+                                                    <input class="form-control" type="file" name="form_file" id="form_file">
+                                                    @if(isset($howApply->form_file))
+                                                        <a href="{{asset($howApply->form_file)}}" target="_blank">View File</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
 
@@ -100,6 +108,15 @@
 
                                             </div>
                                         </div>
+                                        
+                                        <div class="col-lg-6">
+                                            <div>
+                                                <div class="mb-3">
+                                                    <label for="long_desc" class="form-label">Long Description (page)</label>
+                                                    <textarea class="form-control" name="long_desc" id="long_desc" >{{ $howApply->long_desc ?? '' }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <div class="text-center mt-4 d-grid">
@@ -112,8 +129,29 @@
 
                 </form>
         @endsection
-
+            
         @push('backendJs')
+                    {{--  CkEditor CDN  --}}
+                    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+                    <script>
+                        $(document).ready(function () {
+
+                            ClassicEditor
+                                .create(document.querySelector('#long_desc'),{
+
+                                    ckfinder:
+                                        {
+                                            uploadUrl: "{{route('admin.ckeditor.upload', ['_token' => csrf_token() ])}}",
+                                        }
+                                }).then(newEditor => {
+                                jReq = newEditor;
+                            })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        });
+                    </script>
         @endpush
