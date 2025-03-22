@@ -196,6 +196,26 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{route('admin.why-us.index')}}">
+                                <span data-key="t-calendar"> Why Us</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('admin.banner.index')}}">
+                                <span data-key="t-calendar">Banner</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('admin.how-apply.index')}}">
+                                <span data-key="t-calendar">How Apply</span>
+                            </a>
+                        </li>
+                        
+                        
+
 
                         <li>
                             <a href="{{route('admin.basicinfo.index')}}">

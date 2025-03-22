@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AssessmentAnswerController;
 use App\Http\Controllers\Admin\AssessmentController;
 use App\Http\Controllers\Admin\AssessmentGradeController;
+use App\Http\Controllers\Admin\bannerController;
 use App\Http\Controllers\Admin\BasicinfoController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClassController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrolmentController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HerobannerController;
+use App\Http\Controllers\Admin\HowApplyController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LessonMaterialController;
 use App\Http\Controllers\Admin\LessonVideoController;
@@ -31,6 +33,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 
 use App\Http\Controllers\Admin\Auth\AuthenticationController;
 use App\Http\Controllers\Admin\TestimonialSettingController;
+use App\Http\Controllers\Admin\WhyUsController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -193,6 +196,13 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
     Route::post('/contact/change-status', [ContactController::class, 'changeStatus'])->name('contact.status');
     
     //why-us
+    Route::resource('/why-us', WhyUsController::class)->names('why-us');
+    Route::post('/why/change-status', [WhyUsController::class, 'changeStatus'])->name('why-us.status');
     
+    //Banners
+    Route::resource('/banners', BannerController::class)->names('banner');
+    
+    //How to Apply
+    Route::resource('/how-applies', HowApplyController::class)->names('how-apply');
     
 });

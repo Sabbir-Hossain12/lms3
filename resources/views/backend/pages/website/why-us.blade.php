@@ -15,12 +15,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">FAQ</h4>
+                <h4 class="mb-sm-0 font-size-18">Why Us</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                        <li class="breadcrumb-item active">FAQ</li>
+                        <li class="breadcrumb-item active">Why Us</li>
                     </ol>
                 </div>
 
@@ -36,11 +36,11 @@
                 <div class="card-header">
 
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">FAQ List</h4>
+                        <h4 class="card-title">Why Us List</h4>
                         {{--                       @can('Create Admin')--}}
                         {{--                       @if(Auth::guard('admin')->user()->can('Create Admin'))--}}
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAdminModal">
-                            Create FAQ
+                            Create Why Us
                         </button>
                         {{--                        @endcan--}}
                         {{--                        @endif--}}
@@ -53,8 +53,9 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Question</th>
-{{--                            <th>Answer</th>--}}
+                                <th>Image</th>
+                                <th>Title</th>
+                                {{-- <th>Answer</th>--}}
                                 <th>Status</th>
                                 <th>Actions</th>
 
@@ -82,7 +83,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create FAQ</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Why Us</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -90,15 +91,20 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="question" class="col-form-label">Question</label>
-                            <input type="text" class="form-control" id="question" name="question" required>
+                            <label for="image" class="col-form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image" required>
                         </div>
-                        
+
                         <div class="mb-3">
-                            <label for="answer" class="col-form-label">Answer</label>
-                            <textarea class="form-control" id="answer" name="answer" required></textarea>
+                            <label for="title" class="col-form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
                         </div>
-                        
+
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
+                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -115,7 +121,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit FAQ</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Why Us</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -123,21 +129,30 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="equestion" class="col-form-label">Question</label>
-                            <input type="text" class="form-control" id="equestion" name="question" required>
+                            <label for="image" class="col-form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                            <div id="imageWhyPrev mt-1">
+                                
+                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="eanswer" class="col-form-label">Answer</label>
-                            <textarea class="form-control" id="eanswer" name="answer" required></textarea>
+                            <label for="etitle" class="col-form-label">Title</label>
+                            <input type="text" class="form-control" id="etitle" name="title" required>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="edescription" class="col-form-label">Description</label>
+                            <textarea class="form-control" id="edescription" name="description" required></textarea>
+                        </div>
+                        
                         <input id="id" type="number" hidden>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        
+
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     </form>
                 </div>
@@ -155,6 +170,7 @@
     <script>
 
         $(document).ready(function () {
+            let BASE_URL = "{{ asset('') }}";
 
             var token = $("input[name='_token']").val();
 
@@ -166,7 +182,7 @@
                 processing: true,
                 serverSide: true,
                 {{--ajax: "{{url('/admin/data')}}",--}}
-                ajax: "{{route('admin.faq.index')}}",
+                ajax: "{{route('admin.why-us.index')}}",
                 // pageLength: 30,
 
                 columns: [
@@ -176,14 +192,22 @@
 
                     },
                     {
-                        data: 'question',
+                        data: 'image',
+                        render: function (data, type, row) {
+                            
+                            return '<img class="rounded-circle" src="' + BASE_URL + row.image + '" width="100" height="100" alt="Image">';
+                        }
+                    },
+                    
+                    {
+                        data: 'title',
 
                     },
                     // {
                     //     data: 'answer',
                     //
                     // },
-                   
+
                     {
                         data: 'status',
                         name: 'Status',
@@ -213,7 +237,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ route('admin.faq.store') }}",
+                    url: "{{ route('admin.why-us.store') }}",
                     data: formData,
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
@@ -224,7 +248,7 @@
                             adminTable.ajax.reload()
                             swal.fire({
                                 title: "Success",
-                                text: "FAQ Created !",
+                                text: "Why Us Created !",
                                 icon: "success"
                             })
 
@@ -254,7 +278,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "{{ url('admin/faqs') }}/" + id + "/edit",
+                        url: "{{ url('admin/why-us') }}/" + id + "/edit",
                         data: {
                             id: id
                         },
@@ -263,10 +287,14 @@
                         contentType: false,  // Prevent jQuery from setting contentType
                         success: function (res) {
 
-                            console.log('success')
-                            $('#equestion').val(res.data.question);
-                            $('#eanswer').val(res.data.answer);
-                            
+                            console.log(BASE_URL  + res.data.image);
+                            $('#etitle').val(res.data.title);
+                            $('#edescription').val(res.data.description);
+
+                            // $('#imagePrev').empty();
+                            $('#imageWhyPrev').append(
+                                '<img class="rounded-circle" src="' + BASE_URL  + res.data.image + '" width="100" height="100" alt="Image">'
+                            );
                         },
                         error: function (err) {
                             console.log('failed')
@@ -286,7 +314,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ url('admin/faqs') }}/" + id,
+                    url: "{{ url('admin/why-us') }}/" + id,
                     data: formData,
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
@@ -297,11 +325,9 @@
                             adminTable.ajax.reload()
                             swal.fire({
                                 title: "Success",
-                                text: "FAQ Updated !",
+                                text: "Why Us Updated !",
                                 icon: "success"
                             })
-
-
                         }
                     },
                     error: function (err) {
@@ -344,7 +370,7 @@
                                 success: function (res) {
                                     Swal.fire({
                                         title: "Deleted!",
-                                        text: "FAQ has been deleted.",
+                                        text: "Why Us has been deleted.",
                                         icon: "success"
                                     });
 
