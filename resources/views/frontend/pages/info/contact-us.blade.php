@@ -89,18 +89,28 @@
                 <h2 class="title">Fill The Form Below So We Can Get To Know You And Your Needs Better.</h2>
             </div>
             <div class="section-wrapper">
-                <form class="contact-form" action="#" id="contact-form" method="POST">
+                <form class="contact-form" action="{{ route('contact.submit') }}"  method="POST">
+                    @csrf
                     <div class="form-group">
                         <input type="text" placeholder="Your Name" id="name" name="name" required="">
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Your Email" id="email" name="email" required="">
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group w-100">
                         <textarea name="message" rows="8" id="message" placeholder="Your Message" required=""></textarea>
+                        @error('message')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group w-100 text-center">
-                        <button class="lab-btn"><span>Send our Message</span></button>
+                        <button type="submit" class="lab-btn"><span>Send our Message</span></button>
                     </div>
                 </form>
                 <p class="form-message"></p>

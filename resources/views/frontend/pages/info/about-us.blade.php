@@ -24,7 +24,7 @@
     </div>
     @include('frontend.includes.about')
     @include('frontend.includes.feedback')
-    @include('frontend.includes.instructor')
+    @include('frontend.includes.blog')
     @include('frontend.includes.achievement')
 
     @include('frontend.includes.footer')

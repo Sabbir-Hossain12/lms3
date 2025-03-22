@@ -190,6 +190,12 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{route('admin.faq.index')}}">
+                                <span data-key="t-calendar"> FAQ</span>
+                            </a>
+                        </li>
+
 
                         <li>
                             <a href="{{route('admin.basicinfo.index')}}">
@@ -200,7 +206,22 @@
                 </li>
 
                 @endif
-
+                
+    {{--    Contact --}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="fa-solid fa-address-book"></i>
+                        <span data-key="t-apps">Contacts</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('admin.contact.index') }}">
+                                <span data-key="t-calendar">Response List</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
 
 
             </ul>

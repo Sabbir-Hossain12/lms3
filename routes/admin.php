@@ -10,9 +10,11 @@ use App\Http\Controllers\Admin\AssessmentGradeController;
 use App\Http\Controllers\Admin\BasicinfoController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrolmentController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HerobannerController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LessonMaterialController;
@@ -149,18 +151,18 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
     Route::delete('/enrolments/{id}', [EnrolmentController::class, 'destroyEnrolment'])->name('enrolment.destroy');
 
     Route::get('/enroll-student-view/{id}/{course_id}', [EnrolmentController::class, 'viewEnrollStudent'])->name('enroll-student.view');
-
+    
     //Orders
     Route::resource('/orders', OrderController::class)->names('order');
     Route::get('/order/data', [OrderController::class, 'getData'])->name('order.data');
     Route::post('/change-order-status', [OrderController::class, 'changeAdminStatus'])->name('order.status');
-
+    
     //Hero Banners
     Route::resource('/herobanners', HerobannerController::class)->names('herobanner');
-
+    
     //basic settings
     Route::resource('/basic-infos', BasicinfoController::class)->names('basicinfo');
-
+    
     //about Sections
     Route::resource('/abouts', AboutController::class)->names('about');
     
@@ -176,12 +178,21 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
     Route::post('/blog/change-status', [BlogController::class, 'changeStatus'])->name('blog.change-status');
     Route::post('/upload-ckeditor-image', [BlogController::class, 'uploadCkeditorImage'])->name('blog.ckeditor.upload');
     
-    //pages
+    //Pages
     Route::resource('/pages', PageController::class)->names('page');
     Route::post('/upload-ckeditor-image', [PageController::class, 'uploadCkeditorImage'])->name('ckeditor.upload');
     Route::resource('/achievements', AchievementController::class)->names('achievement');
     Route::post('/achievement/change-status', [AchievementController::class, 'changeAchievementStatus'])->name('achievement.status');
     
-    //contact
+    //FAQ
+    Route::resource('/faqs', FaqController::class)->names('faq');
+    Route::post('/faq/change-status', [FaqController::class, 'changeStatus'])->name('faq.status');
+    
+    //Contact Responses
+    Route::resource('/contacts', ContactController::class)->names('contact');
+    Route::post('/contact/change-status', [ContactController::class, 'changeStatus'])->name('contact.status');
+    
+    //why-us
+    
     
 });

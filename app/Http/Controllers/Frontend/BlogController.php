@@ -14,7 +14,7 @@ class BlogController extends Controller
         
         $recentBlogs= Blog::where('status',1)->with('author')->latest()->take(4)->get();
         
-        return view('Frontend.pages.blog.blogs',compact('blogs','recentBlogs'));
+        return view('frontend.pages.blog.blogs',compact('blogs','recentBlogs'));
     }
 
 
@@ -24,7 +24,7 @@ class BlogController extends Controller
         $blog= Blog::where('slug',$slug)->with('author')->first();
         $recentBlogs= Blog::where('status',1)->with('author')->latest()->take(4)->get();
         
-        return view('Frontend.pages.blog.blog-details',compact('blog','recentBlogs'));
+        return view('frontend.pages.blog.blog-details',compact('blog','recentBlogs'));
         
     }
     

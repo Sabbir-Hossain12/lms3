@@ -106,9 +106,9 @@
                     </div>
                 </div>
                 <div class="col-xxl-7 col-xl-6">
-                    <div class="banner-thumb">
-                        <img src="{{asset('frontend')}}/assets/images/banner/01.png" alt="img">
-                    </div>
+{{--                    <div class="banner-thumb">--}}
+{{--                        <img src="{{asset('frontend')}}/assets/images/banner/01.png" alt="img">--}}
+{{--                    </div>--}}
                     <div id="heroButton" class="d-none">
                         <a href="#" class="guidance mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Guidance</span> </a>
                         <a href="#" class="apply mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Apply Today</span></a>

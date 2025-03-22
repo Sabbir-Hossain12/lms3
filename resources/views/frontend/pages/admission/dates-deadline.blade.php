@@ -92,12 +92,10 @@
                 <div class="col-lg-6 d-flex flex-column align-items-center">
                     <a class="date-anchor text-light" href="#"><h2 class="text-light">Apply Online</h2></a>
                 </div>
-
+                
                 <div class="col-lg-4 d-flex flex-column align-items-center">
                     <a href="#" class="date-anchor text-light"><h2 class="text-light">Apply For Scholarships</h2></a>
                 </div>
-                
-
             </div>
         </div>
     </div>

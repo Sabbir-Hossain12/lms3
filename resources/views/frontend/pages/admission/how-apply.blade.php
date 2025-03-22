@@ -61,14 +61,14 @@
     <div class="contact-section padding-tb">
         <div class="container">
             <div class="section-header text-center">
-                <span class="subtitle">Scholarship Form</span>
-                <h4 class="title">In case of any difficulties with the online scholarship application, download the application form. </h4>
+                <span class="subtitle">Admission Form</span>
+                <h4 class="title">In case of any difficulties with the online Admission Application, download the application form. </h4>
             </div>
 
             <div class="section-wrapper d-flex justify-content-center">
                 <div>
                     <a href="#" class="signup btn btn-lg btn-danger" download>
-                        <span class="text-light">Download Scholarship Form</span>
+                        <span class="text-light">Download Admission Form</span>
                     </a>
                 </div>
             </div>

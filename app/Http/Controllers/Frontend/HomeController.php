@@ -59,10 +59,7 @@ class HomeController extends Controller
         return view('Frontend.ai-assistant.index');
     }
 
-    public function contactPage()
-    {
-        return view('frontend.pages.info.contact-us');
-    }
+  
 
     public function aboutPage()
     {
@@ -72,10 +69,11 @@ class HomeController extends Controller
         $testimonialSetting = TestimonialSetting::first();
         $teachers = User::role('teacher')->where('status', 1)->limit(4)->get();
         $achievements = Achievement::where('status', 1)->limit(4)->get();
-
+        $blogs = Blog::where('status', 1)->limit(3)->get();
 
         return view('frontend.pages.info.about-us',
-            compact(['about', 'testimonials', 'testimonialSetting', 'teachers', 'achievements']));
+            compact(['about', 'testimonials', 'testimonialSetting', 'teachers', 'achievements'
+            ,'blogs']));
     }
     public function howToApplyPage()
     {

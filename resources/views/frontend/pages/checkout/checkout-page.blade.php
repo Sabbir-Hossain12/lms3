@@ -1,4 +1,4 @@
-@extends('Frontend.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('content')
     <!-- breadcrumbarea__section__start -->

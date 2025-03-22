@@ -56,7 +56,7 @@ class CourseController extends Controller
 //                },
             ])->get();
 
-        return view('Frontend.pages.course.course-details',
+        return view('frontend.pages.course.course-details',
             compact('courseDetails', 'relatedCourses',
                 'popularCourses', 'popularClasses', 'subjects',
                 'lessons','enrollment'));
@@ -93,7 +93,7 @@ class CourseController extends Controller
 //
 //        })->get();
 
-        return view('Frontend.pages.lesson.lesson', compact('course', 'subjects', 'enrollment'));
+        return view('frontend.pages.lesson.lesson', compact('course', 'subjects', 'enrollment'));
     }
 
 
@@ -101,13 +101,13 @@ class CourseController extends Controller
     {
         $courses = Course::where('status', 1)->get();
 
-        return view('Frontend.pages.course.course-list', compact('courses'));
+        return view('frontend.pages.course.course-list', compact('courses'));
     }
 
     public function ClassList()
     {
         $classes = CourseClass::where('status', 1)->get();
-        return view('Frontend.pages.course.class-list', compact('classes'));
+        return view('frontend.pages.course.class-list', compact('classes'));
     }
 
 
@@ -129,7 +129,7 @@ class CourseController extends Controller
         $video = LessonVideo::where('id', $id)->where('lesson_id', $lesson_id)->first();
 
 
-        $lessonVideoView = view('Frontend.pages.lesson.include.video', compact('video'))->render();
+        $lessonVideoView = view('frontend.pages.lesson.include.video', compact('video'))->render();
 
 
         if (!$video) {
@@ -147,7 +147,7 @@ class CourseController extends Controller
 
         $material = LessonMaterial::where('id', $id)->where('lesson_id', $lesson_id)->first();
 
-        $lessonMaterialView = view('Frontend.pages.lesson.include.material', compact('material'))->render();
+        $lessonMaterialView = view('frontend.pages.lesson.include.material', compact('material'))->render();
 
 
         if (!$material) {
@@ -171,7 +171,7 @@ class CourseController extends Controller
         if ($examType->type == 'quiz') {
             $attempts = optional(AssessmentGrade::where('assessment_id', $examType->id)->where('student_id', auth()->user()->id)->first())->attempts ?? 0;
 
-            $quizView = view('Frontend.pages.lesson.include.quiz', compact('questions', 'examType','attempts'))->render();
+            $quizView = view('frontend.pages.lesson.include.quiz', compact('questions', 'examType','attempts'))->render();
 
             return response()->json(['html' => $quizView]);
         } else {
@@ -179,7 +179,7 @@ class CourseController extends Controller
 
                 $attempts = optional(AssessmentAnswer::where('assessment_id', $examType->id)->where('student_id', auth()->user()->id)->first())->attempts ?? 0;
 
-                $assignmentView = view('Frontend.pages.lesson.include.assignment',
+                $assignmentView = view('frontend.pages.lesson.include.assignment',
                     compact('questions', 'examType','attempts'))->render();
 
                 return response()->json(['html' => $assignmentView]);
@@ -343,6 +343,6 @@ class CourseController extends Controller
 
         $courses = Course::where('title', 'like', '%'.$content.'%')->get();
 
-        return view('Frontend.pages.search.index', compact('courses'));
+        return view('frontend.pages.search.index', compact('courses'));
     }
 }

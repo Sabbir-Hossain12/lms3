@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\AiController;
 use App\Http\Controllers\Frontend\Auth\StudentAuthController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -21,7 +22,6 @@ Route::get('/site-down',function ()
     Artisan::call('down');
 
     return 'The site is now in maintenance mode.';
-
 });
 
 Route::get('/site-up',function ()
@@ -61,7 +61,6 @@ Route::post('/quiz-submit',[CourseController::class,'quizSubmit'])->name('quiz.s
 Route::get('/team-list',[TeacherController::class,'teachersPage'])->name('teacher.page');
 Route::get('/teacher_details/{slug}',[TeacherController::class,'teachersDetails'])->name('teacher.details');
 
-
 //Blogs
 Route::get('/blog-list', [BlogController::class,'blogList'])->name('blog-list');
 Route::get('/blog-details/{slug}',[BlogController::class,'blogDetails'])->name('blog-details');
@@ -72,8 +71,12 @@ Route::post('/order/submit', [OrderController::class,'orderSubmit'])->middleware
 
 //dynamic Pages
 Route::get('/about-us', [HomeController::class,'aboutPage'])->name('about-us');
-Route::get('/contact-us', [HomeController::class,'contactPage'])->name('contact-us');
 Route::get('/faq', [HomeController::class,'faqPage'])->name('faq');
+
+//Contact Us
+Route::get('/contact-us', [ContactController::class,'contactPage'])->name('contact-us');
+Route::post('/contact-us/submit', [ContactController::class,'contactSubmit'])->name('contact.submit');
+
 
 //Admission
 Route::get('/how-to-apply', [HomeController::class,'howToApplyPage'])->name('how-to-apply');
