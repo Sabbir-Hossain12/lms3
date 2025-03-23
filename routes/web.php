@@ -81,7 +81,10 @@ Route::post('/contact-us/submit', [ContactController::class,'contactSubmit'])->n
 //Admission
 Route::get('/how-to-apply', [HomeController::class,'howToApplyPage'])->name('how-to-apply');
 Route::post('/apply-now', [HomeController::class,'applyNow'])->name('apply-now');
+
 Route::get('/scholarship', [HomeController::class,'scholarshipPage'])->name('scholarship');
+Route::post('/apply-scholarship', [HomeController::class,'applyScholarship'])->name('apply-scholarship');
+
 Route::get('/date-timeline', [HomeController::class,'dateTimelinePage'])->name('date-timeline');
 
 //pages

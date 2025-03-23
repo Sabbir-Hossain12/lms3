@@ -91,7 +91,7 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="image" class="col-form-label">Image</label>
+                            <label for="image" class="col-form-label">Image (450 X 600)</label>
                             <input type="file" class="form-control" id="image" name="image" required>
                         </div>
 
@@ -129,7 +129,7 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="image" class="col-form-label">Image</label>
+                            <label for="image" class="col-form-label">Image (450 X 600)</label>
                             <input type="file" class="form-control" id="image" name="image">
                             <div id="imageWhyPrev mt-1">
                                 
@@ -399,7 +399,7 @@
                 $.ajax(
                     {
                         type: 'post',
-                        url: "{{ route('admin.faq.status') }}",
+                        url: "{{ route('admin.why-us.status') }}",
                         data: {
                             '_token': token,
                             id: id,

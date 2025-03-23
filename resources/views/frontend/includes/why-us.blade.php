@@ -30,39 +30,20 @@
 <section id="gallery">
     <div class="container">
         <div class="row g-2 justify-content-center">
+            @forelse($whyUs as $why) 
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <img src="https://uih.education/wp-content/uploads/2023/01/Untitled-1.webp"
+                    <img src="{{ asset($why->image) }}"
                          alt="" class="card-img-top">
                     <div class="card-body">
-                        <a href="#" class="d-block text-center"> <h5 class="card-title text-center">Online Education</h5></a>
-                        <p class="card-text text-center">Our diverse Doctoral, Bachelor,and Certificate programs offer a range of options who seek fulfilling careers in the field of natural integrative medicine.</p>
+                        <a href="#" class="d-block text-center"> <h5 class="card-title text-center">{{ $why->title ?? '' }}</h5></a>
+                        <p class="card-text text-center">{{ $why->description ?? '' }}</p>
                   
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://uih.education/wp-content/uploads/2023/01/Untitled-2.webp"
-                         alt="" class="card-img-top">
-                    <div class="card-body">
-                        <a href="#" class="d-block text-center"><h5 class="card-title text-center">Awesome Course Structure</h5></a>
-                        <p class="card-text text-center">We believe in natural, non-invasive approaches to restoring health, without side effects with holistic integrative medicine</p>
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card">
-                    <img src="https://uih.education/wp-content/uploads/2023/01/Untitled-3.webp"
-                         alt="" class="card-img-top">
-                    <div class="card-body">
-                        <a href="#" class="d-block text-center"> <h5 class="card-title ">Get Certified</h5></a>
-                        <p class="card-text text-center">Explore evidence-based health science and cutting edge research to improve your health with integrative health care the combination of modern and traditional medicine.</p>
-                     
-                    </div>
-                </div>
-            </div>
+            @empty
+            @endforelse
         </div>
     </div>
 </section>

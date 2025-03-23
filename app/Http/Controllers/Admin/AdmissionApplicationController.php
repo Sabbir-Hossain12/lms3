@@ -102,7 +102,12 @@ class AdmissionApplicationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $application = AdmissionResponse::findOrFail($id);
+        
+        return response()->json([
+            'status' => 'success',
+            'data' => $application
+        ], 200);
     }
 
     /**

@@ -24,6 +24,12 @@
         {
             margin-bottom: 100px;
         }
+        .category-item .category-inner .category-content span {
+            font-weight: 400 !important;
+        }
+        b, strong {
+            font-weight: 500 !important;
+        }
     </style>
 @endpush
 
@@ -53,26 +59,59 @@
     {{--   How to Apply Text --}}
     <div class="contact-section padding-tb bg-light">
         <div class="container">
-         <div class="row justify-content-center">
-             <div class="col-lg-4 d-flex flex-column align-items-center">
-                 <h3 >ACADEMIC TERM</h3>
-                 <p class="mt-2">Fall 2023</p>
-                 <p>Spring 2024</p>
-             </div>
+{{--         <div class="row justify-content-center">--}}
+{{--             <div class="col-lg-4 d-flex flex-column align-items-center">--}}
+{{--                 <h3 >ACADEMIC TERM</h3>--}}
+{{--                 <p class="mt-2">Fall 2023</p>--}}
+{{--                 <p>Spring 2024</p>--}}
+{{--             </div>--}}
 
-             <div class="col-lg-4 d-flex flex-column align-items-center">
-                 <h3>DESIRED START DATE</h3>
-                 <p class="mt-2">Fall 2023</p>
-                 <p>Spring 2024</p>
-             </div>
+{{--             <div class="col-lg-4 d-flex flex-column align-items-center">--}}
+{{--                 <h3>DESIRED START DATE</h3>--}}
+{{--                 <p class="mt-2">Fall 2023</p>--}}
+{{--                 <p>Spring 2024</p>--}}
+{{--             </div>--}}
 
-             <div class="col-lg-4 d-flex flex-column align-items-center">
-                 <h3>LAST DATE OF APPLICATION</h3>
-                 <p class="mt-2">Fall 2023</p>
-                 <p>Spring 2024</p>
-             </div>
-             
-         </div>
+{{--             <div class="col-lg-4 d-flex flex-column align-items-center">--}}
+{{--                 <h3>LAST DATE OF APPLICATION</h3>--}}
+{{--                 <p class="mt-2">Fall 2023</p>--}}
+{{--                 <p>Spring 2024</p>--}}
+{{--             </div>--}}
+{{--             --}}
+{{--         </div>--}}
+            <div class="row justify-content-center row-cols-xl-6 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                <div class="col-md-4 ">
+                    <div class="category-item text-center">
+                        <div class="category-inner">
+                            <div class="category-content">
+                                <a href="#"><h6>Academic Term</h6></a>
+                                <span>{{ $dateDeadline->academic_term ?? '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-item text-center">
+                        <div class="category-inner">
+                            
+                            <div class="category-content">
+                                <a href="#"><h6>Desired Start Date</h6></a>
+                                <span>{{ $dateDeadline->desired_start_date ?? '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-item text-center">
+                        <div class="category-inner">
+                            <div class="category-content">
+                                <a href="#"><h6>Application Last Date</h6></a>
+                                <span>{{ $dateDeadline->application_last_date ?? '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -80,8 +119,11 @@
         <div class="container">
             <div class="section-header text-center">
                
-                <h4 class="title">The University of Integrated Health online offers courses starting every 6 months both Spring and Fall semester,
-                    so you can start when it works best for you.</h4>
+                <h4 class="title">{{ $dateDeadline->title ?? '' }}</h4>
+            </div>
+
+            <div class="section-wrapper">
+                {!! $dateDeadline->description ?? '' !!}
             </div>
         </div>
     </div>
@@ -90,11 +132,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 d-flex flex-column align-items-center">
-                    <a class="date-anchor text-light" href="#"><h2 class="text-light">Apply Online</h2></a>
+                    <a class="date-anchor text-light" href="{{ route('how-to-apply') }}"><h2 class="text-light">Apply Online</h2></a>
                 </div>
                 
                 <div class="col-lg-4 d-flex flex-column align-items-center">
-                    <a href="#" class="date-anchor text-light"><h2 class="text-light">Apply For Scholarships</h2></a>
+                    <a href="{{ route('scholarship') }}" class="date-anchor text-light"><h2 class="text-light">Apply For Scholarships</h2></a>
                 </div>
             </div>
         </div>

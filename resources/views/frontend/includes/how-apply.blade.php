@@ -80,42 +80,47 @@
             <div class="col-lg-4 mb-4">
                 <div class="card">
                     <div class="d-flex justify-content-center">
-                        <i class="fa-solid fa-paper-plane"></i>
+                        <i class="fa-solid {{ $howApply->icon_1 ?? '' }}"></i>
                     </div>
                     {{--                    <img src="https://uih.education/wp-content/uploads/2023/01/Untitled-1.webp"--}}
                     {{--                         alt="" class="card-img-top">--}}
                     <div class="card-body">
-                        <a href="#" class="d-block text-center my-3"><h5 class="card-title text-center">
-                                You Apply</h5></a>
-                        <p class="card-text text-center">Tell us a little about yourself and we’ll help with the rest. Our convenient online application tool only takes 10 minutes to complete.</p>
+                        <a href="{{ route('how-to-apply') }}" class="d-block text-center my-3"><h5 class="card-title text-center">
+                                {{ $howApply->title_1 ?? '' }}</h5></a>
+                        <p class="card-text text-center">
+                            {{ $howApply->description_1 ?? '' }}
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
                     <div class="d-flex justify-content-center">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid {{ $howApply->icon_2 ?? '' }}"></i>
                     </div>
                     {{--                    <img src="https://uih.education/wp-content/uploads/2023/01/Untitled-1.webp"--}}
                     {{--                         alt="" class="card-img-top">--}}
                     <div class="card-body">
-                        <a href="#" class="d-block text-center my-3"><h5 class="card-title text-center">
-                                We Connect</h5></a>
-                        <p class="card-text text-center">After you submit your application, an admissions representative will contact you and will help you to complete the process.</p>
+                        <a href="{{ route('how-to-apply') }}" class="d-block text-center my-3"><h5 class="card-title text-center">
+                                {{ $howApply->title_2 ?? '' }}</h5></a>
+                        <p class="card-text text-center">
+                            {{ $howApply->description_2 ?? '' }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
                     <div class="d-flex justify-content-center">
-                        <i class="fa-solid fa-thumbs-up"></i>
+                        <i class="fa-solid {{ $howApply->icon_3 ?? '' }}"></i>
                     </div>
                     {{--                    <img src="https://uih.education/wp-content/uploads/2023/01/Untitled-1.webp"--}}
                     {{--                         alt="" class="card-img-top">--}}
                     <div class="card-body">
-                        <a href="#" class="d-block text-center my-3"><h5 class="card-title text-center">
-                                You Get Ready</h5></a>
-                        <p class="card-text text-center">Once you’ve completed your application and connected with an admissions representative, you’re ready to create your schedule.</p>
+                        <a href="{{ route('how-to-apply') }}" class="d-block text-center my-3"><h5 class="card-title text-center">
+                                {{ $howApply->title_3 ?? '' }}</h5></a>
+                        <p class="card-text text-center">
+                            {{ $howApply->description_3 ?? '' }}
+                        </p>
                     </div>
                 </div>
             </div>

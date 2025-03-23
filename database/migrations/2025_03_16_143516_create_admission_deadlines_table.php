@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('admission_deadlines', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('description');
+            $table->longText('description')->nullable();
+            $table->text('academic_term')->nullable();
+            $table->text('desired_start_date')->nullable();
+            $table->text('application_last_date')->nullable();
             $table->timestamps();
         });
     }

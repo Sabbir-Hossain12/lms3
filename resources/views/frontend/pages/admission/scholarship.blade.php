@@ -9,7 +9,7 @@
             margin-bottom: 8px; /* Space between each option */
         }
 
-        .form-group2 input[type="checkbox"] {
+        .form-group2 input[type="radio"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
@@ -85,7 +85,7 @@
                 <h2 class="title">Fill The Form Below So We Can Get To Know You And Your Needs Better.</h2>
             </div>
             <div class="section-wrapper">
-                <form class="contact-form" action="{{ route('apply-now') }}" method="POST" enctype="multipart/form-data">
+                <form class="contact-form" action="{{ route('apply-scholarship') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="first_name" class="form-label">First Name</label>
@@ -112,8 +112,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="address" class="form-label">Address</label>
-                        <textarea  id="address"  name="address" required=""></textarea>
+                        <label for="address_1" class="form-label">Address</label>
+                        <textarea  id="address_1"  name="address_1" required=""></textarea>
                         
                         @error('address')
                         <span class="text-danger">{{ $message }}</span>
@@ -137,8 +137,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="postal_code" class="form-label">Postal Code</label>
-                        <input type="text" id="postal_code" value="{{ old('postal_code') }}" name="postal_code" required="">
+                        <label for="zip" class="form-label">Zip/Postal Code</label>
+                        <input type="text" id="zip" value="{{ old('zip') }}" name="zip" required="">
                         @error('postal_code')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -169,14 +169,15 @@
                     </div>
                     
                     <div class="d-flex flex-column">
-                        <p>Which month and year do you plan to enter UIH? * <span class="required">*</span></p>
+                        <p>Which month and year do you plan to enter? * <span class="required">*</span></p>
+                        
                         <div class="form-group2">
-                            <input type="checkbox" id="january" value="january" name="season[]">
+                            <input type="radio" id="january" value="january" name="month_enter">
                             <label for="january">January</label>
                         </div>
 
                         <div class="form-group2">
-                            <input type="checkbox" value="august" id="august" name="season[]">
+                            <input type="radio" value="august" id="august" name="month_enter">
                             <label for="august">August</label>
                         </div>
                     </div>

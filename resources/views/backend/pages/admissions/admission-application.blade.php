@@ -126,15 +126,21 @@
                             <textarea type="text" class="form-control" id="why_interested" name="why_interested" readonly></textarea>
                         </div>
                         
-                        
+                        <div class="mb-3">
+                            <label for="message" class="col-form-label">Documents</label>
+                            
+                            <div id="documentsPrev">
+                                
+                            </div>
+                        </div>
                         
                         <input id="id" type="number" hidden>
-
+                        
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-
+                        
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     </form>
                 </div>
@@ -152,8 +158,10 @@
     <script>
 
         $(document).ready(function () {
+            
+            let base_path = "{{ asset('') }}" 
 
-            var token = $("input[name='_token']").val();
+            let token = $("input[name='_token']").val();
 
             //Show Data through Datatable 
             let adminTable = $('#adminTable').DataTable({
@@ -202,48 +210,7 @@
 
                 ]
             });
-
-
-            // Create Admin
-            $('#createAdmin').submit(function (e) {
-                e.preventDefault();
-
-                let formData = new FormData(this);
-
-                $.ajax({
-                    type: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ route('admin.faq.store') }}",
-                    data: formData,
-                    processData: false,  // Prevent jQuery from processing the data
-                    contentType: false,  // Prevent jQuery from setting contentType
-                    success: function (res) {
-                        if (res.status === 'success') {
-                            $('#createAdminModal').modal('hide');
-                            $('#createAdmin')[0].reset();
-                            adminTable.ajax.reload()
-                            swal.fire({
-                                title: "Success",
-                                text: "Admission Application Created !",
-                                icon: "success"
-                            })
-
-
-                        }
-                    },
-                    error: function (err) {
-                        console.error('Error:', err);
-                        swal.fire({
-                            title: "Failed",
-                            text: "Something Went Wrong !",
-                            icon: "error"
-                        })
-                        // Optionally, handle error behavior like showing an error message
-                    }
-                });
-            });
+            
 
             // Edit Admin Data
             $(document).on('click', '.editButton', function () {
@@ -256,7 +223,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "{{ url('admin/faqs') }}/" + id + "/edit",
+                        url: "{{ url('admin/admission-applications') }}/" + id + "/edit",
                         data: {
                             id: id
                         },
@@ -266,9 +233,21 @@
                         success: function (res) {
 
                             console.log('success')
-                            $('#equestion').val(res.data.question);
-                            $('#eanswer').val(res.data.answer);
+                            $('#first_name').val(res.data.first_name);
+                            $('#last_name').val(res.data.last_name);
+                            $('#email').val(res.data.email);
+                            $('#phone').val(res.data.phone);
+                            $('#highest_education').val(res.data.highest_education);
+                            $('#why_chose').val(res.data.why_chose);
+                            $('#why_interested').val(res.data.why_interested);
 
+                            if (res.data.documents)
+                            {
+                                $('#documentsPrev').empty();
+                                $('#documentsPrev').append(
+                                    '<a href="' + base_path + res.data.documents + '" target="_blank">' + res.data.highest_education + '</a>');
+                            }
+                            
                         },
                         error: function (err) {
                             console.log('failed')
@@ -375,7 +354,7 @@
                 $.ajax(
                     {
                         type: 'post',
-                        url: "{{ route('admin.faq.status') }}",
+                        url: "{{ route('admin.admission-application.status') }}",
                         data: {
                             '_token': token,
                             id: id,

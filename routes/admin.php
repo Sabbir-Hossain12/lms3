@@ -215,10 +215,10 @@ Route::prefix('admin')->name('admin.')->middleware(['checkAuth','role:admin|teac
     
     //Scholarships
     Route::resource('/scholarships', ScholarshipController::class)->names('scholarship');
-    Route::post('/scholarship/change-status', [ScholarshipController::class, 'changeStatus'])->name('scholarship.status');
     
     //Scholarship Applications
     Route::resource('/scholarship-applications', ScholarshipApplicationController::class)->names('scholarship-application');
+    Route::post('/scholarship/change-status', [ScholarshipApplicationController::class, 'changeStatus'])->name('scholarship.status');
     
     //Dates and Deadlines
     Route::resource('/dates-and-deadlines', DateDeadlineController::class)->names('dates-deadlines');

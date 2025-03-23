@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdmissionScholarship;
 use Illuminate\Http\Request;
 
 class ScholarshipController extends Controller
@@ -12,7 +13,9 @@ class ScholarshipController extends Controller
      */
     public function index()
     {
-        //
+        $scholarship = AdmissionScholarship::first();
+        
+        return view('backend.pages.admissions.scholarship', compact('scholarship'));
     }
 
     /**
@@ -28,7 +31,28 @@ class ScholarshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//      dd($request->all());
+        $scholarship = new AdmissionScholarship();
+        $scholarship->title = $request->title;
+        $scholarship->description = $request->description;
+        
+        if ($request->hasFile('document')) {
+            $file = $request->file('document');
+            $filename = time().uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('backend/upload/scholarship/'), $filename);
+            $scholarship->document = 'backend/upload/scholarship/'.$filename;
+        }
+        
+        $save = $scholarship->save();
+        
+        if ($save) {
+            
+            return redirect()->back()->with('success', 'Scholarship Updated Successfully');
+        }
+        
+        return redirect()->back()->with('error', 'Something went wrong');
+        
+        
     }
 
     /**
@@ -52,7 +76,31 @@ class ScholarshipController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $scholarship = AdmissionScholarship::find($id);
+        $scholarship->title = $request->title;
+        $scholarship->description = $request->description;
+        
+        if ($request->hasFile('document')) {
+            
+            if ($scholarship->document && file_exists(public_path($scholarship->document))) {
+                unlink(public_path($scholarship->document));
+            }
+            
+            $file = $request->file('document');
+            $filename = time().uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('backend/upload/scholarship/'), $filename);
+            $scholarship->document = 'backend/upload/scholarship/'.$filename;
+        }
+        
+        $save = $scholarship->save();
+        
+        if ($save) {
+            
+            return redirect()->back()->with('success', 'Scholarship Updated Successfully');
+        }
+        
+        return redirect()->back()->with('error', 'Something went wrong');
     }
 
     /**

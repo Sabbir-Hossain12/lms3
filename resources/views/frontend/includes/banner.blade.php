@@ -2,7 +2,7 @@
     .banner-section2 {
         {{--background-image: url("{{asset($heroBanner->video_thumbnail_img)}}") !important;--}}
         background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-        url("https://uih.education/wp-content/uploads/2025/01/backdrop_1.jpg") !important;
+        url("{{asset($banner->image)}}") !important;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -11,7 +11,6 @@
         /*opacity: 0.5;*/
         transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
         /*padding-top: 170px;*/
-
     }
 
     /*@media (min-width: 576px) {*/
@@ -43,8 +42,8 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12">
                     <div class="banner-content d-flex flex-column justify-content-center align-items-center">
 {{--                        <h6 class="subtitle text-uppercase fw-medium">{{ $heroBanner->short_title ?? '' }}</h6>--}}
-                        <h2 class="title"><span class="d-lg-block text-center">Virtual Graduation - 2025 </span></h2>
-                        <p class="desc">We are extremely proud to extend to you an invitation for the Spring semester of 2025 virtual graduation.</p>
+                        <h2 class="title"><span class="d-lg-block text-center"> {{ $banner->title ?? '' }}</span></h2>
+                        <p class="desc">{{ $banner->description	 ?? '' }}</p>
                     </div>
                 </div>
             </div>

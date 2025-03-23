@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdmissionDeadline;
 use Illuminate\Http\Request;
 
 class DateDeadlineController extends Controller
@@ -12,7 +13,9 @@ class DateDeadlineController extends Controller
      */
     public function index()
     {
-        //
+        $dateDeadline = AdmissionDeadline::first();
+        
+        return view('backend.pages.admissions.date-deadline', compact('dateDeadline'));
     }
 
     /**
@@ -28,7 +31,16 @@ class DateDeadlineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dateDeadlines = new AdmissionDeadline();
+        $dateDeadlines->title = $request->title;
+        $dateDeadlines->description = $request->description;
+        $dateDeadlines->academic_term = $request->academic_term;
+        $dateDeadlines->desired_start_date = $request->desired_start_date;
+        $dateDeadlines->application_last_date	 = $request->application_last_date	;
+       
+        $dateDeadlines->save();
+        
+        return redirect()->back()->with('success', 'Date and Deadline Created Successfully');
     }
 
     /**
@@ -52,7 +64,16 @@ class DateDeadlineController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $dateDeadlines = AdmissionDeadline::find($id);
+        $dateDeadlines->title = $request->title;
+        $dateDeadlines->description = $request->description;
+        $dateDeadlines->academic_term = $request->academic_term;
+        $dateDeadlines->desired_start_date = $request->desired_start_date;
+        $dateDeadlines->application_last_date = $request->application_last_date	;
+
+        $dateDeadlines->save();
+
+        return redirect()->back()->with('success', 'Date and Deadline Updated Successfully');
     }
 
     /**
