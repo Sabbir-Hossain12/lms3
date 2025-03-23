@@ -87,7 +87,8 @@ class HomeController extends Controller
     }
     public function howToApplyPage()
     {
-        return view('frontend.pages.admission.how-apply');
+        $applyContent = HowApply::first();
+        return view('frontend.pages.admission.how-apply', compact('applyContent'));
     }
 
 

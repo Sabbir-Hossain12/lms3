@@ -82,12 +82,20 @@
                             <li class="menu-item-has-children">
                                 <a href="javascript:void(0)">Academics</a>
                                 <ul class="lab-ul">
-                                    <li>
-                                        <a href="{{ route('class-list') }}">Categories</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('course-list') }}">Courses</a>
-                                    </li>
+                                    @forelse($classes as $category)
+                                        <li>
+                                            <a class="text-danger" href="{{ route('course-by-class', $category->slug ) }}">{{ $category->title }}</a>
+                                        </li>
+
+                                        @forelse($category->courses as $course)
+                                            <li>
+                                                <a href="{{ route('course-details', $course->slug)}}">{{ $course->title }}</a>
+                                            </li>
+                                        @empty
+                                        @endforelse
+
+                                    @empty
+                                    @endforelse
 
                                 </ul>
                             </li>

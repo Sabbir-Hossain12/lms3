@@ -19,6 +19,10 @@
             font-size: 16px;
             cursor: pointer;
         }
+        h1, h2, h3, h4, h5, h6 {
+            color: #101115;
+            font-weight: 500!important;
+        }
     </style>
 @endpush
 
@@ -53,7 +57,7 @@
                 <h2 class="title">Fill The Form Below So We Can Get To Know You And Your Needs Better.</h2>
             </div>
             <div class="section-wrapper">
-                <div>#</div>
+                {!!  $applyContent->long_desc ?? '' !!}
             </div>
         </div>
     </div>
@@ -67,7 +71,7 @@
 
             <div class="section-wrapper d-flex justify-content-center">
                 <div>
-                    <a href="#" class="signup btn btn-lg btn-danger" download>
+                    <a href="{{ asset($applyContent->form_file) }}" class="signup btn btn-lg btn-danger" download>
                         <span class="text-light">Download Admission Form</span>
                     </a>
                 </div>

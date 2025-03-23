@@ -40,5 +40,13 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
+        View()->composer('frontend.includes.header', function ($view)
+        {
+            $classes = CourseClass::where('status',1)->limit(3)->with('courses')->get();
+
+            $view->with(['classes'=> $classes]);
+
+        });
+
     }
 }

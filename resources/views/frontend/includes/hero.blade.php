@@ -110,9 +110,9 @@
 {{--                        <img src="{{asset('frontend')}}/assets/images/banner/01.png" alt="img">--}}
 {{--                    </div>--}}
                     <div id="heroButton" class="d-none">
-                        <a href="#" class="guidance mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Guidance</span> </a>
-                        <a href="#" class="apply mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Apply Today</span></a>
-                        <a href="#" class="programs mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Programs</span></a>
+                        <a href="{{ route('contact-us') }}" class="guidance mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Guidance</span> </a>
+                        <a href="{{ route('how-to-apply') }}" class="apply mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Apply Today</span></a>
+                        <a href="{{ route('course-list') }}" class="programs mb-3"><i class="fa-solid fa-arrow-alt-circle-right"></i> <span>Programs</span></a>
                     </div>
                 </div>
             </div>
