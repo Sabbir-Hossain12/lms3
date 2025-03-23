@@ -390,7 +390,7 @@
                             adminTable.ajax.reload()
                             swal.fire({
                                 title: "Success",
-                                text: "Student Updated !",
+                                text: "Class Updated !",
                                 icon: "success"
                             })
                         }
